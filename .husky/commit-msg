@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Warn-only Husky hook: checks for a Jira key like PS-123 in commit messages.
+# Does NOT block commits; prints a warning if missing.
+
+JIRA_PROJECT_KEY_REGEX="PS-[0-9]+"
+
+commit_msg_file="$1"
+if [ -z "$commit_msg_file" ] || [ ! -f "$commit_msg_file" ]; then
+  exit 0
+fi
+
+commit_msg_content="$(cat "$commit_msg_file")"
+
+if ! echo "$commit_msg_content" | grep -Eiq "$JIRA_PROJECT_KEY_REGEX"; then
+  echo "WARNING: No Jira key (e.g., PS-123) found in this commit message." 1>&2
+  echo "Including a Jira key helps link commits/PRs to Jira issues." 1>&2
+fi
+
+exit 0
