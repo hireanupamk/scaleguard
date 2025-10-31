@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Audit log for ScaleGuard configuration changes and access</description>
+    <enableFeeds>false</enableFeeds>
+    <externalIdField>AuditId__c</externalIdField>
+    <label>SG Audit Log</label>
+    <pluralLabel>SG Audit Logs</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

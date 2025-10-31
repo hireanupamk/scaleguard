@@ -1,0 +1,15 @@
+.slds-box {
+    padding: 1rem;
+}
+
+.slds-p-around_medium {
+    padding: 1rem;
+}
+
+.slds-form-element__label {
+    font-weight: 600;
+}
+
+.slds-form-element {
+    margin-bottom: 1rem;
+}

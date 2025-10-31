@@ -1,0 +1,11 @@
+.slds-box {
+    padding: 1rem;
+}
+
+.slds-modal__header {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.slds-modal__footer {
+    border-top: 1px solid #e6e6e6;
+}

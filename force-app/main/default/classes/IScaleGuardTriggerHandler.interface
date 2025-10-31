@@ -1,0 +1,32 @@
+/**
+ * @description Interface for ScaleGuard trigger handlers
+ * @author ScaleGuard Team
+ */
+public interface IScaleGuardTriggerHandler {
+    
+    /**
+     * @description Method to execute trigger logic
+     * @param triggerContext The trigger context
+     * @param correlationId The correlation ID for tracking
+     */
+    void execute(Trigger.Context triggerContext, String correlationId);
+    
+    /**
+     * @description Method to determine if this handler should run
+     * @param triggerContext The trigger context
+     * @return True if this handler should execute, false otherwise
+     */
+    Boolean shouldExecute(Trigger.Context triggerContext);
+    
+    /**
+     * @description Method to get the execution order for this handler
+     * @return The execution order number
+     */
+    Integer getExecutionOrder();
+    
+    /**
+     * @description Method to determine if this handler can be bypassed
+     * @return True if this handler can be bypassed, false otherwise
+     */
+    Boolean canBeBypassed();
+}

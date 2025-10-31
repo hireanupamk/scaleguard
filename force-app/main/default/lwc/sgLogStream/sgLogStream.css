@@ -1,0 +1,24 @@
+.slds-box {
+    padding: 1rem;
+}
+
+.slds-table--cell-buffer {
+    border-collapse: separate;
+}
+
+.slds-table--cell-buffer td,
+.slds-table--cell-buffer th {
+    padding: 0.75rem 1rem;
+}
+
+.slds-text-color_error {
+    color: #ea0000;
+}
+
+.slds-text-color_warning {
+    color: #ff9900;
+}
+
+.slds-text-color_success {
+    color: #00c476;
+}

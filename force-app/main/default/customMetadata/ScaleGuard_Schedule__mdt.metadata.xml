@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Sample Schedule</label>
+    <protected>false</protected>
+    <values>
+        <field>CronExpression__c</field>
+        <value> 0 0 12 * * ?</value>
+    </values>
+    <values>
+        <field>IntervalMinutes__c</field>
+        <value> 1440.0</value>
+    </values>
+    <values>
+        <field>IsActive__c</field>
+        <value> true</value>
+    </values>
+    <values>
+        <field>Name__c</field>
+        <value> DailySchedule</value>
+    </values>
+</CustomMetadata>
