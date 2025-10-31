@@ -1,0 +1,37 @@
+name: Deploy to Salesforce on main
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    name: Deploy force-app to Salesforce
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Salesforce CLI
+        uses: sfdx-actions/setup-sfdx@v3
+        with:
+          sfdx-version: latest
+
+      - name: Authenticate using SFDX_AUTH_URL secret
+        env:
+          SFDX_AUTH_URL: ${{ secrets.SFDX_AUTH_URL }}
+        run: |
+          if [ -z "$SFDX_AUTH_URL" ]; then
+            echo "SFDX_AUTH_URL secret is not set. Exiting.";
+            exit 1;
+          fi
+          echo "$SFDX_AUTH_URL" > sfdxAuth.txt
+          sfdx auth:sfdxurl:store -f sfdxAuth.txt -a targetOrg
+
+      - name: Deploy source to targetOrg
+        run: |
+          sfdx force:source:deploy -p force-app -u targetOrg -w 20 -l RunLocalTests
+
+      - name: Show deployment status
+        run: |
+          sfdx force:mdapi:deploy:report -u targetOrg || true
