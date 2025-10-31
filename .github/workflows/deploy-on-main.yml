@@ -32,10 +32,40 @@ jobs:
           echo "$SFDX_AUTH_URL" > sfdxAuth.txt
           sfdx auth:sfdxurl:store -f sfdxAuth.txt -a targetOrg
 
-      - name: Deploy source to targetOrg
+      - name: Deploy source to targetOrg (sfdx fallback -> sf)
         run: |
-          sfdx force:source:deploy -p force-app -u targetOrg -w 20 -l RunLocalTests
+          set -e
+          echo "Checking for sfdx or sf CLI..."
+          if command -v sfdx >/dev/null 2>&1; then
+            echo "Using sfdx to deploy"
+            sfdx force:source:deploy -p force-app -u targetOrg -w 20 -l RunLocalTests
+            exit_code=$?
+            echo "sfdx exit code: $exit_code"
+            if [ $exit_code -ne 0 ]; then
+              echo "sfdx deploy failed"
+              exit $exit_code
+            fi
+          elif command -v sf >/dev/null 2>&1; then
+            echo "Using sf to deploy"
+            # Use sf project deploy start for source-format deployments
+            sf project deploy start -p force-app -u targetOrg --test-level RunLocalTests --wait 20
+            exit_code=$?
+            echo "sf exit code: $exit_code"
+            if [ $exit_code -ne 0 ]; then
+              echo "sf deploy failed"
+              exit $exit_code
+            fi
+          else
+            echo "Neither sfdx nor sf CLI is available on the runner."
+            exit 127
+          fi
 
-      - name: Show deployment status
+      - name: Show deployment status (if sf used)
         run: |
-          sfdx force:mdapi:deploy:report -u targetOrg || true
+          # If sf is available, print latest deploys (best-effort). If using sfdx this may be a no-op.
+          if command -v sf >/dev/null 2>&1; then
+            echo "Listing recent sf deployments (last 5)"
+            sf project deploy report --json || true
+          else
+            echo "sf not installed; skipping sf deploy report"
+          fi
