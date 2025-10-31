@@ -31,7 +31,28 @@ jobs:
             exit 1;
           fi
           echo "$SFDX_AUTH_URL" > sfdxAuth.txt
-          sfdx auth:sfdxurl:store -f sfdxAuth.txt -a targetOrg
+          echo "Storing auth URL to sfdx and creating alias 'targetOrg'..."
+          sfdx auth:sfdxurl:store -f sfdxAuth.txt -a targetOrg --json || {
+            echo "sfdx auth command failed";
+            sfdx auth:sfdxurl:store -f sfdxAuth.txt -a targetOrg || true;
+            exit 1;
+          }
+
+      - name: Verify sfdx authentication and alias
+        run: |
+          echo "sfdx version: $(sfdx --version)"
+          echo "Checking for alias 'targetOrg' in org list..."
+          # List orgs and search for alias; fail with helpful output if not found
+          sfdx force:org:list --all --json > orgs.json || true
+          if grep -F '"alias": "targetOrg"' orgs.json >/dev/null 2>&1; then
+            echo "Found alias targetOrg"
+          else
+            echo "Alias targetOrg not found. Showing human-readable org list for debugging (sensitive fields redacted)"
+            sfdx force:org:list --all || true
+            echo "Contents of orgs.json (truncated):"
+            head -n 200 orgs.json || true
+            exit 1
+          fi
 
       - name: Deploy source to targetOrg (sfdx fallback -> sf)
         run: |
