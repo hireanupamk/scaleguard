@@ -30,13 +30,27 @@ jobs:
             echo "SFDX_AUTH_URL secret is not set. Exiting.";
             exit 1;
           fi
+          # Write auth URL to file and show first few chars (debug)
           echo "$SFDX_AUTH_URL" > sfdxAuth.txt
+          echo "First 20 chars of auth URL (checking format): $(head -c 20 sfdxAuth.txt)..."
+          echo "File size: $(wc -c < sfdxAuth.txt) bytes"
+          echo "Line count: $(wc -l < sfdxAuth.txt) lines"
+          
           echo "Storing auth URL to sfdx and creating alias 'targetOrg'..."
-          sfdx auth:sfdxurl:store -f sfdxAuth.txt -a targetOrg --json || {
-            echo "sfdx auth command failed";
-            sfdx auth:sfdxurl:store -f sfdxAuth.txt -a targetOrg || true;
+          result=$(sfdx auth:sfdxurl:store -f sfdxAuth.txt -a targetOrg --json)
+          exit_code=$?
+          echo "Auth command exit code: $exit_code"
+          echo "Auth command output (redacted):"
+          echo "$result" | sed 's/force:\/\/[^@]*@/force://'
+          
+          if [ $exit_code -ne 0 ]; then
+            echo "sfdx auth command failed. Trying non-JSON mode:"
+            sfdx auth:sfdxurl:store -f sfdxAuth.txt -a targetOrg || true
             exit 1;
-          }
+          fi
+          
+          echo "Auth stored. Checking sfdx config dir:"
+          ls -la ~/.sfdx/ || true
 
       - name: Verify sfdx authentication and alias
         run: |
