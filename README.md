@@ -1,62 +1,45 @@
-# ScaleGuard
+# ScaleGuard - Project Overview
 
-ScaleGuard is a Salesforce application designed to provide observability and incident management capabilities.
+## Executive Summary
 
-## Deployment
+ScaleGuard is a next-generation Salesforce automation and observability platform designed for large, complex enterprise organizations. It provides a comprehensive solution for managing, monitoring, and optimizing Salesforce automation processes while maintaining enterprise-grade security, performance, and compliance standards.
 
-### Authentication Issue Resolution
+## Purpose
 
-The deployment was failing due to an authentication issue with the `sfdx_orgs.json` file format. The error indicated:
+ScaleGuard addresses the challenges faced by enterprises with complex Salesforce environments by offering:
 
-```
-Invalid or missing SFDX auth URL.
-Ensure the file exists, and that it either a) contains only the URL, or b) is a JSON file with a top-level property named sfdxAuthUrl.
-```
+- Metadata-driven orchestration for batch jobs, queueable jobs, triggers, and flows
+- Unified Automation Studio for centralized configuration and management
+- Real-time observability with structured logging and dashboards
+- AI/ML-powered incident triage and technical debt analytics
+- Comprehensive security and compliance framework
+- Native Salesforce development using Apex, LWC, custom metadata, and Platform Events
 
-### Solution
+## MVP Scope and Features
 
-1. **Fixed Authentication File Format**: 
-   - The `sfdx_orgs.json` file now correctly contains the auth URL in the format:
-   ```json
-   {
-     "sfdxAuthUrl": "force://7ab78366773d..."
-   }
-   ```
+The Minimum Viable Product (MVP) focuses on delivering core functionality including:
 
-2. **Workflow Improvements**:
-   - Enhanced the GitHub Actions workflow to properly handle authentication
-   - Added better error handling and debugging output
+### Core Capabilities:
+- **Metadata-driven Orchestration**: Dynamic scheduling, chaining, and dependency management for automation processes
+- **Unified Automation Studio**: Lightning Web Component for configuring and managing all automation
+- **Real-time Observability**: Structured logging, error tracking, and dashboards with correlation IDs
+- **Basic Incident Triage**: Automated incident identification and prioritization
+- **Admin UI**: User-friendly interface for configuration and monitoring
 
-### Deployment Process
+### Technical Features:
+- Trigger orchestration framework with metadata-driven configuration
+- Platform event-based logging and observability
+- Structured logging with correlation IDs
+- Basic dashboard and alerting capabilities
+- Demo data and onboarding wizard
+- Permission set management for security
 
-To deploy to your Salesforce org:
+## Value Proposition
 
-1. Ensure you have the proper SFDX auth URL in your repository secrets
-2. Push changes to the main branch
-3. The GitHub Actions workflow will automatically deploy to your target org
+ScaleGuard delivers significant value to enterprise Salesforce organizations by:
 
-### Manual Deployment
-
-If you need to deploy manually:
-
-```bash
-# Store authentication
-sfdx force:auth:sfdxurl:store -f sfdx_auth_url.txt -a targetOrg
-
-# Deploy source code
-sf project deploy start --source-dir force-app --target-org ScaleGuard --test-level RunLocalTests --wait 20
-```
-
-## Project Structure
-
-- `force-app/` - Main Salesforce source code
-- `.github/workflows/` - GitHub Actions deployment workflow
-- `config/` - Configuration files
-- `scripts/` - Utility scripts
-
-## Getting Started
-
-1. Clone this repository
-2. Install Salesforce CLI tools
-3. Configure your org authentication
-4. Deploy using the provided workflow or manual commands
+1. **Reducing Complexity**: Centralized automation management reduces operational overhead
+2. **Improving Visibility**: Real-time observability provides comprehensive insights into automation performance
+3. **Enhancing Reliability**: Automated incident detection and prioritization improve system reliability
+4. **Ensuring Compliance**: Built-in security and audit capabilities meet enterprise requirements
+5. **Accelerating Development**: Metadata-driven approach enables rapid configuration changes
