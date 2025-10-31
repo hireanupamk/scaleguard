@@ -1,19 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>*</members>
+        <members>AccountTrigger</members>
+        <members>DemoBatch</members>
+        <members>DemoBatch2</members>
+        <members>DemoQueueable</members>
+        <members>DemoTriggerHandler</members>
+        <members>DemoTriggerHandler_Test</members>
+        <members>EmptyClass</members>
+        <members>IScaleGuardTriggerHandler</members>
+        <members>LogViewerController</members>
+        <members>ScaleGuard_AI_Triage</members>
+        <members>ScaleGuard_Correlation</members>
+        <members>ScaleGuard_DemoDataLoader</members>
+        <members>ScaleGuard_Executor</members>
+        <members>ScaleGuard_Executor_Test</members>
+        <members>ScaleGuard_IncidentManager</members>
+        <members>ScaleGuard_Logger</members>
+        <members>ScaleGuard_Observability</members>
+        <members>ScaleGuard_Orchestration_Comprehensive_Test</members>
+        <members>ScaleGuard_Orchestrator</members>
+        <members>ScaleGuard_Orchestrator_Test</members>
+        <members>ScaleGuard_OrchestratorRunner</members>
+        <members>ScaleGuard_Scheduler</members>
+        <members>ScaleGuard_Scheduler_Test</members>
+        <members>ScaleGuard_TriggerOrchestration_Performance_Test</members>
+        <members>ScaleGuard_TriggerOrchestrator</members>
+        <members>ScaleGuard_TriggerOrchestrator_Test</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>*</members>
+        <members>SG_AuditLog__c</members>
+        <members>SG_Execution__c</members>
+        <members>SG_Incident__c</members>
+        <members>Account</members>
         <name>CustomObject</name>
     </types>
     <types>
-        <members>*</members>
+        <members>sgAlerting</members>
+        <members>sgAutomationStudio</members>
+        <members>sgDemoData</members>
+        <members>sgExecutionTable</members>
+        <members>sgHealthDashboard</members>
+        <members>sgIncidentBoard</members>
+        <members>sgIncidentManagement</members>
+        <members>sgIncidentPrioritization</members>
+        <members>sgJobDetail</members>
+        <members>sgJobList</members>
+        <members>sgLogStream</members>
+        <members>sgLogViewer</members>
+        <members>sgTicketTracker</members>
+        <members>sgTraceability</members>
         <name>LightningComponentBundle</name>
     </types>
     <types>
-        <members>*</members>
+        <members>ScaleGuard_Admin</members>
+        <members>ScaleGuard_Viewer</members>
         <name>PermissionSet</name>
     </types>
     <version>65.0</version>
