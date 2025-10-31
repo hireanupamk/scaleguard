@@ -19,7 +19,8 @@ jobs:
 
       - name: Install Salesforce CLI via npm
         run: |
-          npm install -g @salesforce/cli
+          # install the legacy sfdx CLI (provides sfdx force:* commands)
+          npm install -g sfdx-cli
 
       - name: Authenticate using SFDX_AUTH_URL secret
         env:
@@ -62,10 +63,14 @@ jobs:
 
       - name: Show deployment status (if sf used)
         run: |
-          # If sf is available, print latest deploys (best-effort). If using sfdx this may be a no-op.
+          # Print deployment status (best-effort). Support both sf and sfdx reporting.
           if command -v sf >/dev/null 2>&1; then
-            echo "Listing recent sf deployments (last 5)"
+            echo "Listing recent sf deployments"
             sf project deploy report --json || true
+          elif command -v sfdx >/dev/null 2>&1; then
+            echo "sfdx is available; no separate deploy report for source-format deployments (deploy waited earlier)."
+            # For mdapi deployments you'd run: sfdx force:mdapi:deploy:report -i <jobId>
           else
-            echo "sf not installed; skipping sf deploy report"
+            echo "Neither sf nor sfdx is available; cannot show deployment report"
+            exit 0
           fi
