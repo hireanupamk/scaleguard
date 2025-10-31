@@ -42,6 +42,9 @@ $RECYCLE.BIN/
 # Local environment variables
 .env
 
+# Jira OAuth configuration
+scripts/jira/jira.oauth.json
+
 # Python Salesforce Functions
 **/__pycache__/
 **/.venv/
