@@ -12,11 +12,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Salesforce CLI
-        # Use the official Salesforce setup action which is published and supported
-        uses: salesforce/setup-sfdx@v1
+      - name: Setup Node (for installing Salesforce CLI)
+        uses: actions/setup-node@v4
         with:
-          sfdx-version: latest
+          node-version: '18'
+
+      - name: Install Salesforce CLI via npm
+        run: |
+          npm install -g @salesforce/cli
 
       - name: Authenticate using SFDX_AUTH_URL secret
         env:
