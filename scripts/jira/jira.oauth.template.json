@@ -1,0 +1,13 @@
+{
+  "baseUrl": "https://your-domain.atlassian.net",
+  "projectKeyDefault": "YOUR_PROJECT_KEY",
+  "clientId": "YOUR_CLIENT_ID",
+  "clientSecret": "YOUR_CLIENT_SECRET",
+  "redirectUri": "http://localhost:43123/callback",
+  "scopes": [
+    "offline_access",
+    "read:jira-work",
+    "write:jira-work"
+  ],
+  "tokenStoreDir": ".jira-oauth"
+}

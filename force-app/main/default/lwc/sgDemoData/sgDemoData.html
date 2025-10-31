@@ -1,0 +1,46 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 10-31-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="slds-box slds-box_x-small slds-theme_default">
+        <div class="slds-grid slds-grid_vertical slds-wrap">
+            <div class="slds-col slds-size_12-of-12">
+                <div class="slds-page-header">
+                    <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <h1 class="slds-text-heading_small slds-truncate slds-align_absolute-center">
+                                        <span>Demo Data Generator</span>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="slds-col slds-size_12-of-12 slds-m-top_medium">
+                <lightning-button 
+                    label="Create Demo Failure" 
+                    title="Create Demo Failure" 
+                    onclick={handleCreateDemoFailure}
+                    variant="brand"
+                    disabled={isLoading}
+                    class="slds-m-bottom_small">
+                </lightning-button>
+                
+                <template if:true={message}>
+                    <div class="slds-alert slds-alert_{isError ? 'error' : 'success'} slds-m-top_small" role="alert">
+                        <span class="slds-assistive-text">{isError ? 'Error' : 'Success'}</span>
+                        {message}
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

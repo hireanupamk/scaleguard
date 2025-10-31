@@ -1,0 +1,35 @@
+.slds-box {
+    padding: 1rem;
+}
+
+.slds-p-around_medium {
+    padding: 1rem;
+}
+
+.slds-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.5rem;
+}
+
+.slds-col {
+    flex: 1 1 0%;
+    padding: 0 0.5rem;
+}
+
+.slds-size_1-of-4 {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.slds-gutters {
+    margin: 0 -0.5rem;
+}
+
+.slds-gutters > .slds-col {
+    padding: 0 0.5rem;
+}
+
+.slds-m-top_medium {
+    margin-top: 1rem;
+}

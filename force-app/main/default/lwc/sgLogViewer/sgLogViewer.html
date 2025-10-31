@@ -1,0 +1,62 @@
+<!--
+  @description       : Log viewer component with filtering capabilities
+  @author            : ScaleGuard Team
+  @group             : 
+  @last modified on  : 10-31-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="slds-box slds-p-around_medium">
+        <h2>Log Viewer</h2>
+        
+        <!-- Filter Controls -->
+        <div class="slds-grid slds-gutters slds-wrap">
+            <div class="slds-col slds-size_1-of-4">
+                <lightning-input 
+                    label="Filter by Job/Component" 
+                    value={jobFilter}
+                    onchange={handleJobFilterChange}
+                    placeholder="Enter job name or component">
+                </lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+                <lightning-combobox
+                    label="Filter by Severity"
+                    value={severityFilter}
+                    options={severityOptions}
+                    onchange={handleSeverityFilterChange}
+                    placeholder="Select severity">
+                </lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+                <lightning-datepicker
+                    label="Filter by Date"
+                    value={dateFilter}
+                    onchange={handleDateFilterChange}>
+                </lightning-datepicker>
+            </div>
+            <div class="slds-col slds-size_1-of-4">
+                <lightning-button 
+                    label="Clear Filters" 
+                    variant="neutral" 
+                    onclick={clearFilters}
+                    class="slds-m-top_medium">
+                </lightning-button>
+            </div>
+        </div>
+        
+        <!-- Log Table -->
+        <div class="slds-m-top_medium">
+            <lightning-datatable
+                data={filteredLogs}
+                columns={columns}
+                onsort={handleSort}
+                sorted-by={sortedBy}
+                sorted-direction={sortedDirection}
+                hide-checkbox-column="true"
+                max-row-selection="1000"
+                resize-column-disabled="true">
+            </lightning-datatable>
+        </div>
+    </div>
+</template>

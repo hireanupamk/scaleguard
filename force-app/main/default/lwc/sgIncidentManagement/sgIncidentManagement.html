@@ -1,0 +1,60 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 10-31-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="slds-box slds-theme_default">
+        <div class="slds-grid slds-gutters slds-wrap">
+            <div class="slds-col slds-size_12-of-12">
+                <h2 class="slds-text-heading_small">Incident Management</h2>
+            </div>
+            
+            <div class="slds-col slds-size_12-of-12 slds-m-bottom_medium">
+                <lightning-input 
+                    label="Correlation ID" 
+                    value={correlationId} 
+                    onchange={handleCorrelationIdChange}
+                    placeholder="Enter correlation ID to analyze">
+                </lightning-input>
+            </div>
+            
+            <div class="slds-col slds-size_12-of-12 slds-m-bottom_medium">
+                <lightning-button 
+                    label="Analyze Incident" 
+                    onclick={handleAnalyzeClick}
+                    variant="brand"
+                    disabled={isProcessing}>
+                </lightning-button>
+                
+                <lightning-button 
+                    label="Reset" 
+                    onclick={resetForm}
+                    variant="neutral"
+                    class="slds-m-left_x-small">
+                </lightning-button>
+            </div>
+            
+            <template if:true={isProcessing}>
+                <div class="slds-col slds-size_12-of-12 slds-text-align_center">
+                    <lightning-spinner alternative-text="Processing"></lightning-spinner>
+                    <p>Analyzing incident...</p>
+                </div>
+            </template>
+            
+            <template if:true={showPrioritization}>
+                <div class="slds-col slds-size_12-of-12 slds-m-top_medium">
+                    <c-sg-incident-prioritization correlation-id={correlationId}></c-sg-incident-prioritization>
+                </div>
+            </template>
+            
+            <template if:true={showTicketTracker}>
+                <div class="slds-col slds-size_12-of-12 slds-m-top_medium">
+                    <c-sg-ticket-tracker></c-sg-ticket-tracker>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PlatformEvent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Platform event for ScaleGuard execution lifecycle events</description>
+    <isIntegratable>false</isIntegratable>
+    <label>SG Execution Event</label>
+    <pluralLabel>SG Execution Events</pluralLabel>
+</PlatformEvent>

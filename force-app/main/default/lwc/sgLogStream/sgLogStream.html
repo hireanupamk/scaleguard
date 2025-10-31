@@ -1,0 +1,17 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 10-31-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="slds-box">
+        <h3>Real-time Log Stream</h3>
+        <lightning-datatable
+            data={logs}
+            columns={columns}
+            onrowaction={handleRowAction}>
+        </lightning-datatable>
+    </div>
+</template>
