@@ -1,0 +1,85 @@
+<!--
+  @description       : Job detail component for editing automation configs
+  @author            : ScaleGuard Team
+  @group             : 
+  @last modified on  : 10-31-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="slds-box slds-p-around_medium">
+        <h3>Job Configuration</h3>
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item size="12">
+                <lightning-input 
+                    label="Job Name" 
+                    value={jobForm.name} 
+                    data-field="name"
+                    onchange={handleInputChange}
+                    disabled={isLoading}>
+                </lightning-input>
+            </lightning-layout-item>
+            
+            <lightning-layout-item size="12">
+                <lightning-combobox
+                    label="Job Type"
+                    value={jobForm.jobType}
+                    data-field="jobType"
+                    options={jobTypes}
+                    onchange={handleInputChange}
+                    disabled={isLoading}>
+                </lightning-combobox>
+            </lightning-layout-item>
+            
+            <lightning-layout-item size="12">
+                <lightning-input 
+                    label="Apex Class" 
+                    value={jobForm.apexClass} 
+                    data-field="apexClass"
+                    onchange={handleInputChange}
+                    disabled={isLoading}>
+                </lightning-input>
+            </lightning-layout-item>
+            
+            <lightning-layout-item size="12">
+                <lightning-input 
+                    type="checkbox"
+                    label="Is Active"
+                    checked={jobForm.isActive}
+                    data-field="isActive"
+                    onchange={handleInputChange}
+                    disabled={isLoading}>
+                </lightning-input>
+            </lightning-layout-item>
+            
+            <lightning-layout-item size="12">
+                <lightning-textarea
+                    label="Dependencies (comma-separated job names)"
+                    value={jobForm.dependencies}
+                    data-field="dependencies"
+                    onchange={handleInputChange}
+                    disabled={isLoading}>
+                </lightning-textarea>
+            </lightning-layout-item>
+            
+            <lightning-layout-item size="12">
+                <lightning-button-group>
+                    <lightning-button 
+                        label="Save" 
+                        variant="brand" 
+                        onclick={handleSave}
+                        disabled={isLoading}>
+                        <template if:true={isLoading}>
+                            <lightning-spinner alternative-text="Saving..." size="small"></lightning-spinner>
+                        </template>
+                    </lightning-button>
+                    <lightning-button 
+                        label="Cancel" 
+                        variant="neutral" 
+                        onclick={handleCancel}
+                        disabled={isLoading}>
+                    </lightning-button>
+                </lightning-button-group>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

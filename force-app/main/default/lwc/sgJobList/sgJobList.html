@@ -1,0 +1,28 @@
+<!--
+  @description       : Job list component for viewing automation jobs
+  @author            : ScaleGuard Team
+  @group             : 
+  @last modified on  : 10-31-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="slds-box">
+        <h3>Automation Jobs</h3>
+        <lightning-datatable
+            data={jobs}
+            columns={columns}
+            onrowaction={handleRowAction}>
+        </lightning-datatable>
+        
+        <!-- Job Detail Editor Modal -->
+        <template if:true={showModal}>
+            <c-lightning-modal-header label="Edit Job"></c-lightning-modal-header>
+            <c-lightning-modal-body>
+                <c-sg-job-detail job={selectedJob} onjobsaved={handleJobSaved}></c-sg-job-detail>
+            </c-lightning-modal-body>
+            <c-lightning-modal-footer>
+                <lightning-button label="Cancel" variant="neutral" onclick={handleCancel}></lightning-button>
+            </c-lightning-modal-footer>
+        </template>
+    </div>
+</template>

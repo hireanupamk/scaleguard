@@ -1,0 +1,60 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 10-31-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="slds-box slds-box_x-small slds-theme_default">
+        <div class="slds-grid slds-grid_vertical slds-wrap">
+            <div class="slds-col slds-size_12-of-12">
+                <div class="slds-page-header">
+                    <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                            <div class="slds-media">
+                                <div class="slds-media__body">
+                                    <h1 class="slds-text-heading_small slds-truncate slds-align_absolute-center">
+                                        <span>Alerting System</span>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-size_12-of-12 slds-text-align_right">
+                            <template if:true={hasAlerts}>
+                                <lightning-badge label={alertCount} variant="error" class="slds-m-left_small"></lightning-badge>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <template if:false={hasAlerts}>
+                <div class="slds-col slds-size_12-of-12 slds-text-align_center slds-m-top_medium">
+                    <p>No active alerts</p>
+                </div>
+            </template>
+            
+            <template if:true={hasAlerts}>
+                <div class="slds-col slds-size_12-of-12 slds-m-top_medium">
+                    <div class="slds-scrollable_y" style="height: 300px;">
+                        <template for:each={alerts} for:item="alert">
+                            <div key={alert.id} class="slds-box slds-box_x-small slds-theme_error slds-m-bottom_small">
+                                <div class="slds-grid slds-gutters slds-wrap">
+                                    <div class="slds-col slds-size_12-of-12">
+                                        <div class="slds-text-heading_small slds-text-color_error">{alert.message}</div>
+                                    </div>
+                                    <div class="slds-col slds-size_12-of-12 slds-text-body_small">
+                                        <div><strong>Component:</strong> {alert.component}</div>
+                                        <div><strong>Correlation ID:</strong> {alert.correlationId}</div>
+                                        <div><strong>Time:</strong> {alert.timestamp}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

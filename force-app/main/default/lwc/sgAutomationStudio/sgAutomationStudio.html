@@ -1,0 +1,29 @@
+<!--
+  @description       : Main dashboard for ScaleGuard Automation Studio
+  @author            : ScaleGuard Team
+  @group             : 
+  @last modified on  : 10-31-2025
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <div class="slds-box">
+        <h2>ScaleGuard Automation Studio</h2>
+        <p>Manage all your automation processes from one place</p>
+        
+        <!-- Tabs for different views -->
+        <lightning-tabset>
+            <lightning-tab label="Jobs" name="jobs">
+                <c-sg-job-list></c-sg-job-list>
+            </lightning-tab>
+            <lightning-tab label="Executions" name="executions">
+                <c-sg-execution-table></c-sg-execution-table>
+            </lightning-tab>
+            <lightning-tab label="Logs" name="logs">
+                <c-sg-log-stream></c-sg-log-stream>
+            </lightning-tab>
+            <lightning-tab label="Incidents" name="incidents">
+                <c-sg-incident-board></c-sg-incident-board>
+            </lightning-tab>
+        </lightning-tabset>
+    </div>
+</template>

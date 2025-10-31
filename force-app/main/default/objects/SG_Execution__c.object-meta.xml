@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>Tracks execution instances of ScaleGuard jobs</description>
+    <enableFeeds>false</enableFeeds>
+    <externalIdField>Job__c</externalIdField>
+    <label>SG Execution</label>
+    <pluralLabel>SG Executions</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

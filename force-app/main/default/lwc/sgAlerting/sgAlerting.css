@@ -1,0 +1,102 @@
+.slds-box_x-small {
+    padding: 0.5rem;
+}
+
+.slds-box {
+    padding: 1rem;
+}
+
+.slds-theme_default {
+    background-color: #ffffff;
+    border: 1px solid #c9c9c9;
+    border-radius: 0.25rem;
+}
+
+.slds-page-header {
+    margin-bottom: 1rem;
+}
+
+.slds-page-header__row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.5rem;
+}
+
+.slds-page-header__col-title {
+    flex: 1 1 auto;
+    padding: 0 0.5rem;
+}
+
+.slds-media__body {
+    flex: 1 1 auto;
+}
+
+.slds-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.slds-grid_vertical {
+    flex-direction: column;
+}
+
+.slds-wrap {
+    flex-wrap: wrap;
+}
+
+.slds-gutters {
+    margin: 0 -0.5rem;
+}
+
+.slds-gutters > .slds-col {
+    padding: 0 0.5rem;
+}
+
+.slds-size_12-of-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.slds-text-heading_small {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.slds-text-heading_large {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.slds-text-color_error {
+    color: #ea001e;
+}
+
+.slds-text-align_center {
+    text-align: center;
+}
+
+.slds-text-body_small {
+    font-size: 0.75rem;
+    line-height: 1.25;
+}
+
+.slds-m-top_medium {
+    margin-top: 1rem;
+}
+
+.slds-m-bottom_small {
+    margin-bottom: 0.5rem;
+}
+
+.slds-theme_error {
+    background-color: #ffebe9;
+    border: 1px solid #c23934;
+    color: #080707;
+}
+
+.slds-scrollable_y {
+    overflow-y: auto;
+}
